@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Etch-a-Sketch</title>
+  </head>
+  <body>
+  
+    <script>
+        const body = document.querySelector("body");
+        const container = document.createElement("div");
+        container.style.display = "grid";
+        container.style.gridTemplateRows = "repeat(16, 50px)";
+        container.style.gridTemplateColumns = "repeat(16, 50px)";
+        container.style.gridRowGap = "5px";
+        container.style.gridColumnGap = "5px";
+
+        for (let i = 0; i < 256; i++) {
+            const square = document.createElement("div");
+            square.style.backgroundColor = "blue";
+            square.style.width = "50px";
+            square.style.height = "50px";
+            container.appendChild(square);
+        }
+
+        body.appendChild(container);
+
+    </script>
+  </body>
+</html>
