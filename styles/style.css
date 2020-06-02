@@ -1,0 +1,10 @@
+.square {
+    background-color: blue;
+    width: 30px;
+    height: 30px;
+
+}
+
+.square .hover {
+    background-color: tomato;
+}
