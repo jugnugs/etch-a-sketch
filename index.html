@@ -10,6 +10,13 @@
   <body>
   
     <script>
+
+        function onHover(square) {
+            console.log(square);
+            this.classList.add("hover");
+            console.log(this);
+        }
+
         const body = document.querySelector("body");
         const container = document.createElement("div");
         container.style.display = "grid";
@@ -26,6 +33,10 @@
             container.appendChild(square);
         }
         body.appendChild(container);
+
+        squares.forEach(square => {
+            square.addEventListener('mouseover', onHover);
+        });
 
     </script>
   </body>
