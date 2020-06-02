@@ -19,12 +19,8 @@
 
         const body = document.querySelector("body");
         const container = document.createElement("div");
-        container.style.display = "grid";
-        container.style.gridTemplateRows = "repeat(16, 30px)";
-        container.style.gridTemplateColumns = "repeat(16, 30px)";
-        container.style.gridRowGap = "5px";
-        container.style.gridColumnGap = "5px";
-
+        container.classList.add("grid");
+        
         let squares = [];
         for (let i = 0; i < 256; i++) {
             const square = document.createElement("div");
@@ -37,6 +33,10 @@
         squares.forEach(square => {
             square.addEventListener('mouseover', onHover);
         });
+
+        const button = document.createElement("button");
+        button.textContent = "New Grid";
+        body.insertBefore(button, container);
 
     </script>
   </body>
