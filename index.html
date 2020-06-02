@@ -17,9 +17,13 @@
 
         function makeNewGrid(e) {
             console.log(e);
+            let width = prompt("Enter number of desired squares for the width:");
+            let height= prompt("Enter number of desired squares for the height:");
             while(container.hasChildNodes()) {
                 container.removeChild(container.firstChild);
             }
+
+            
         }
 
         const body = document.querySelector("body");
