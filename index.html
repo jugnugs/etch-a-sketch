@@ -23,21 +23,22 @@
                 container.removeChild(container.firstChild);
             }
 
-            
+
         }
 
         const body = document.querySelector("body");
-        const container = document.createElement("div");
-        container.classList.add("grid");
+        const grid = document.createElement("div");
+        grid.classList.add("grid");
 
         let squares = [];
-        for (let i = 0; i < 256; i++) {
+        for (let i = 0; i < 4096; i++) {
             const square = document.createElement("div");
             square.classList.add("square");
             squares.push(square);
-            container.appendChild(square);
+            grid.appendChild(square);
         }
-        body.appendChild(container);
+
+        body.appendChild(grid);
 
         squares.forEach(square => {
             square.addEventListener('mouseover', onHover);
@@ -45,7 +46,7 @@
 
         const button = document.createElement("button");
         button.textContent = "New Grid";
-        body.insertBefore(button, container);
+        body.insertBefore(button, grid);
 
         button.addEventListener("click", makeNewGrid);
 
