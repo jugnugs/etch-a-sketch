@@ -13,31 +13,42 @@
 
         function onHover(e) {
             this.classList.add("hover");
+            // random color
+            const randomColor = Math.floor(Math.random()*16777215).toString(16);
+            this.style.backgroundColor = "#" + randomColor;
+        }
+
+        function configGrid(width, height) {
+            squares = [];
+            grid.style.gridTemplateRows = `repeat(${width}, 1fr)`;
+            grid.style.gridTemplateColumns = `repeat(${height}, 1fr)`;
+            for (let i = 0; i < width * height; i++) {
+                const square = document.createElement("div");
+                square.classList.add("square");
+                squares.push(square);
+                grid.appendChild(square);
+            }
+            squares.forEach(square => {
+                square.addEventListener('mouseover', onHover);
+            });
         }
 
         function makeNewGrid(e) {
             console.log(e);
             let width = prompt("Enter number of desired squares for the width:");
             let height= prompt("Enter number of desired squares for the height:");
-            while(container.hasChildNodes()) {
-                container.removeChild(container.firstChild);
+            while(grid.hasChildNodes()) {
+                grid.removeChild(grid.firstChild);
             }
-
-
+            configGrid(width, height);
         }
 
         const body = document.querySelector("body");
         const grid = document.createElement("div");
         grid.classList.add("grid");
 
-        let squares = [];
-        for (let i = 0; i < 4096; i++) {
-            const square = document.createElement("div");
-            square.classList.add("square");
-            squares.push(square);
-            grid.appendChild(square);
-        }
-
+        let squares;
+        configGrid(16, 16);
         body.appendChild(grid);
 
         squares.forEach(square => {
