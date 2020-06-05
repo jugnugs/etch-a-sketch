@@ -8,11 +8,11 @@
     <link href="styles/style.css" rel="stylesheet">
   </head>
   <body>
+      <div id="center"><h1>Etch-a-Sketch</h1></div>
   
     <script>
 
         function onHover(e) {
-            // random color
             const randomColor = Math.floor(Math.random()*16777215).toString(16);
             this.style.backgroundColor = "#" + randomColor;
         }
@@ -42,21 +42,18 @@
             configGrid(width, height);
         }
 
-        const body = document.querySelector("body");
+        const content = document.querySelector("#center");
         const grid = document.createElement("div");
         grid.classList.add("grid");
 
         let squares;
         configGrid(16, 16);
-        body.appendChild(grid);
-
-        squares.forEach(square => {
-            square.addEventListener('mouseover', onHover);
-        });
+        content.appendChild(grid);
 
         const button = document.createElement("button");
         button.textContent = "New Grid";
-        body.insertBefore(button, grid);
+        button.classList.add("button");
+        content.insertBefore(button, grid);
 
         button.addEventListener("click", makeNewGrid);
 
