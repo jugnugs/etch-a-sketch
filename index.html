@@ -8,7 +8,11 @@
     <link href="styles/style.css" rel="stylesheet">
   </head>
   <body>
-      <div id="center"><h1>Etch-a-Sketch</h1></div>
+      <div id="center">
+          <h1>Etch-a-Sketch</h1>
+          <div id="button-container"></div>
+    
+    </div>
   
     <script>
 
@@ -42,6 +46,12 @@
             configGrid(width, height);
         }
 
+        function clearGrid(e) {
+            squares.forEach(square => {
+                square.style.backgroundColor = "#000";
+            });
+        }
+
         const content = document.querySelector("#center");
         const grid = document.createElement("div");
         grid.classList.add("grid");
@@ -50,12 +60,25 @@
         configGrid(16, 16);
         content.appendChild(grid);
 
-        const button = document.createElement("button");
-        button.textContent = "New Grid";
-        button.classList.add("button");
-        content.insertBefore(button, grid);
+        const buttonContainer = document.querySelector("#button-container");
 
-        button.addEventListener("click", makeNewGrid);
+        const newBtn = document.createElement("button");
+        newBtn.textContent = "New Grid";
+        newBtn.classList.add("button");
+        buttonContainer.appendChild(newBtn);
+
+        const rainbowBtn = document.createElement("button");
+        rainbowBtn.textContent = "Rainbow";
+        rainbowBtn.classList.add("button");
+        buttonContainer.appendChild(rainbowBtn);
+
+        const clearBtn = document.createElement("button");
+        clearBtn.textContent = "Clear";
+        clearBtn.classList.add("button");
+        buttonContainer.appendChild(clearBtn);
+
+        newBtn.addEventListener("click", makeNewGrid);
+        clearBtn.addEventListener("click", clearGrid);
 
     </script>
   </body>
