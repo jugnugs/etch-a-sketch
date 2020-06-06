@@ -1,5 +1,7 @@
 # Etch-a-Sketch
 
+https://jugnugs.github.io/etch-a-sketch/
+
 Etch-a-Sketch is a simple web application that allows you to draw on a re-scalable canvas using a mouse. 
 
 ## Self-Reflection
