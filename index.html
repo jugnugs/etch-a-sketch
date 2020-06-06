@@ -17,6 +17,10 @@
     <script>
 
         function onHover(e) {
+            this.style.backgroundColor = "#fff";
+        }
+
+        function onRainbowHover(e) {
             const randomColor = Math.floor(Math.random()*16777215).toString(16);
             this.style.backgroundColor = "#" + randomColor;
         }
@@ -46,12 +50,31 @@
             configGrid(width, height);
         }
 
+        function toggleRainbowMode(e) {
+            if (!rainbowMode) {
+                rainbowBtn.textContent = "White";
+                rainbowMode = true;
+                squares.forEach(square => {
+                    square.removeEventListener('mouseover', onHover);
+                    square.addEventListener('mouseover', onRainbowHover);
+                });
+            } else {
+                rainbowBtn.textContent = "Rainbow";
+                rainbowMode = false;
+                squares.forEach(square => {
+                    square.removeEventListener('mouseover', onRainbowHover);
+                    square.addEventListener('mouseover', onHover);
+                });
+            }
+        }
+
         function clearGrid(e) {
             squares.forEach(square => {
                 square.style.backgroundColor = "#000";
             });
         }
 
+        let rainbowMode = false;
         const content = document.querySelector("#center");
         const grid = document.createElement("div");
         grid.classList.add("grid");
@@ -78,6 +101,7 @@
         buttonContainer.appendChild(clearBtn);
 
         newBtn.addEventListener("click", makeNewGrid);
+        rainbowBtn.addEventListener("click", toggleRainbowMode);
         clearBtn.addEventListener("click", clearGrid);
 
     </script>
