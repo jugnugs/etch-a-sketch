@@ -36,7 +36,9 @@
                 grid.appendChild(square);
             }
             squares.forEach(square => {
-                square.addEventListener('mouseover', onHover);
+                if (rainbowMode) 
+                    square.addEventListener('mouseover', onRainbowHover);
+                else square.addEventListener('mouseover', onHover);
             });
         }
 
